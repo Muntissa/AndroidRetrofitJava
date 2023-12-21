@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingEnd="25sp"
+    android:paddingStart="25sp"
+    android:paddingBottom="25sp"
+    android:paddingTop="10sp"
+    tools:context=".Activities.ClientsCreate">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Создание нового клиента"
+        android:textAlignment="center"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/clientForm_SecondName"
+        android:layout_width="0dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="50sp"
+        android:layout_marginEnd="10dp"
+        android:hint="@string/clientForm_SecondName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/clientForm_FirstName"
+        android:layout_width="0dp"
+        android:layout_height="52sp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10sp"
+        android:layout_marginEnd="10dp"
+        android:hint="@string/clientForm_FirstName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/clientForm_SecondName" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/clientForm_LastName"
+        android:layout_width="0dp"
+        android:layout_height="52sp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10sp"
+        android:layout_marginEnd="10dp"
+        android:hint="@string/clientForm_LastName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/clientForm_FirstName" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/clientForm_Email"
+        android:layout_width="0dp"
+        android:layout_height="52sp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10sp"
+        android:layout_marginEnd="10dp"
+        android:hint="@string/clientForm_Email"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/clientForm_LastName" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/clientForm_Phone"
+        android:layout_width="0dp"
+        android:layout_height="52sp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10sp"
+        android:layout_marginEnd="10dp"
+        android:hint="@string/clientForm_Phone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/clientForm_Email" />
+
+    <Button
+        android:id="@+id/toListClients"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="В список"
+        app:layout_constraintBottom_toTopOf="@+id/clientForm_AddClientBTN"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/clientForm_AddClientBTN"
+        android:layout_width="208sp"
+        android:layout_height="62sp"
+        android:textSize="25sp"
+        android:text="Добавить"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

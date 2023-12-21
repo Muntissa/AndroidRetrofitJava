@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.AndroidJava"
+        android:usesCleartextTraffic="true"
+        tools:targetApi="31">
+        <activity
+            android:name=".Activities.BookingsCreate"
+            android:exported="false" />
+        <activity
+            android:name=".Activities.BookingsEdit"
+            android:exported="false" />
+        <activity
+            android:name=".Activities.ApartamentsCreate"
+            android:exported="false" />
+        <activity
+            android:name=".Activities.ApartamentsEdit"
+            android:exported="false" />
+        <activity
+            android:name=".Activities.TariffsCreate"
+            android:exported="false" />
+        <activity
+            android:name=".Activities.TariffsEdit"
+            android:exported="false" />
+        <activity
+            android:name=".Activities.ServicesCreate"
+            android:exported="false" />
+        <activity
+            android:name=".Activities.ServicesEdit"
+            android:exported="false" />
+        <activity
+            android:name=".Activities.FacilitiesCreate"
+            android:exported="false" />
+        <activity
+            android:name=".Activities.FacilitiesEdit"
+            android:exported="false" />
+        <activity
+            android:name=".Activities.FacilitiesList"
+            android:exported="false" />
+        <activity
+            android:name=".Activities.ServicesList"
+            android:exported="false" />
+        <activity
+            android:name=".Activities.TariffsList"
+            android:exported="false" />
+        <activity
+            android:name=".Activities.BookingsList"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Activities.ApartamentsList"
+            android:exported="true" />
+        <activity
+            android:name=".Activities.ClientsEdit"
+            android:exported="false" />
+        <activity
+            android:name=".Activities.ClientsList"
+            android:exported="false" />
+        <activity
+            android:name=".Activities.ClientsCreate"
+            android:exported="false" />
+    </application>
+
+</manifest>

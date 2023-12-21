@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageButton
+        android:id="@+id/navBar_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:src="@android:drawable/ic_menu_search"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/navBar"
+        android:layout_width="250dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:visibility="invisible"
+        app:cardCornerRadius="20dp"
+        app:layout_constraintBottom_toBottomOf="@id/navBar_btn"
+        app:layout_constraintStart_toEndOf="@+id/navBar_btn"
+        app:layout_constraintTop_toTopOf="@id/navBar_btn">
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingEnd="8dp">
+
+                    <ImageButton
+                        android:id="@+id/toClientsListBTN"
+                        android:layout_width="55dp"
+                        android:layout_height="0dp"
+                        android:layout_marginStart="8dp"
+                        android:src="@android:drawable/ic_menu_my_calendar"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:ignore="MissingConstraints,SpeakableTextPresentCheck" />
+
+                    <ImageButton
+                        android:id="@+id/toBookingsListBTN"
+                        android:layout_width="55dp"
+                        android:layout_height="0dp"
+                        android:layout_marginStart="8dp"
+                        android:src="@android:drawable/stat_sys_headset"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/toClientsListBTN"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:ignore="MissingConstraints,SpeakableTextPresentCheck" />
+
+                    <ImageButton
+                        android:id="@+id/toApartamentsListBTN"
+                        android:layout_width="55dp"
+                        android:layout_height="0dp"
+                        android:layout_marginStart="8dp"
+                        android:src="@drawable/house_svgrepo_com"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/toBookingsListBTN"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:ignore="MissingConstraints,SpeakableTextPresentCheck" />
+
+                    <ImageButton
+                        android:id="@+id/toTariffsListBTN"
+                        android:layout_width="55dp"
+                        android:layout_height="0dp"
+                        android:layout_marginStart="8dp"
+                        android:src="@android:drawable/btn_star"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/toApartamentsListBTN"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="1.0"
+                        tools:ignore="MissingConstraints,SpeakableTextPresentCheck" />
+
+                    <ImageButton
+                        android:id="@+id/toServicesListBTN"
+                        android:layout_width="55dp"
+                        android:layout_height="0dp"
+                        android:src="@android:drawable/btn_star"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/toTariffsListBTN"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:ignore="MissingConstraints,SpeakableTextPresentCheck" />
+
+                    <ImageButton
+                        android:id="@+id/toFacilitiesListBTN"
+                        android:layout_width="55dp"
+                        android:layout_height="0dp"
+                        android:src="@android:drawable/btn_star"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/toServicesListBTN"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:ignore="MissingConstraints,SpeakableTextPresentCheck" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
+        </HorizontalScrollView>
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
