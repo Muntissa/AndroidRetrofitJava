@@ -1,6 +1,10 @@
 package ru.pin120.androidjava.Adapters;
 
+import android.graphics.Typeface;
 import android.os.Build;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.StyleSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import ru.pin120.androidjava.Entities.Apartaments;
 import ru.pin120.androidjava.Entities.Bookings;
@@ -45,6 +50,33 @@ public class BookingsAdapter extends RecyclerView.Adapter<BookingsHolder>{
                 (booking.getApartament().getTariff().getPrice() + booking.getApartament().getArea() * 50) +
                 booking.getServices().stream().mapToInt(Services::getPrice).sum() * 0.5) + " ₽");
 
+        String fullTextStart = "Нач. дата: " + booking.getStartTime();
+        SpannableString sStringStart = new SpannableString(fullTextStart);
+        int startIndex = 0;
+        int endIndex = "Нач. дата:".length();
+        sStringStart.setSpan(new StyleSpan(Typeface.BOLD), startIndex, endIndex, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        holder.startTime.setText(sStringStart);
+
+        String fullTextEnd = "Нач. дата: " + booking.getEndTime();
+        SpannableString sStringEnd = new SpannableString(fullTextEnd);
+        int startIndexEnd = 0;
+        int endIndexEnd = "Кон. дата:".length();
+        sStringEnd.setSpan(new StyleSpan(Typeface.BOLD), startIndexEnd, endIndexEnd, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        holder.endTime.setText(sStringEnd);
+
+        String fullTextApart = "Номер апартаментов: " + booking.getApartament().getNumber();
+        SpannableString sStringApart = new SpannableString(fullTextApart);
+        int startIndexApart = 0;
+        int endIndexApart = "Номер апартаментов: ".length();
+        sStringApart.setSpan(new StyleSpan(Typeface.BOLD), startIndexApart, endIndexApart, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        holder.apartamentsNumber.setText(sStringApart);
+
+        holder.services.setText("Услуги: \n" + String.join("\n", booking.getServices()
+                .stream()
+                .map(Services::getName)
+                .collect(Collectors.toList())));
+
+        holder.setDetailsVisibility();
     }
 
     @Override

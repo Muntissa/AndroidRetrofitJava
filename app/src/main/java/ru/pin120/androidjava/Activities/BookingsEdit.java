@@ -66,6 +66,17 @@ public class BookingsEdit extends AppCompatActivity {
         setVars();
         setFields();
 
+        endDatePicker.init(startDatePicker.getYear(), startDatePicker.getMonth(), startDatePicker.getDayOfMonth(), (view, year, monthOfYear, dayOfMonth) -> {
+            // Проверка, чтобы endDatePicker не был раньше startDatePicker
+            if (endDatePicker.getYear() < startDatePicker.getYear() ||
+                    (endDatePicker.getYear() == startDatePicker.getYear() && endDatePicker.getMonth() < startDatePicker.getMonth()) ||
+                    (endDatePicker.getYear() == startDatePicker.getYear() && endDatePicker.getMonth() == startDatePicker.getMonth() && endDatePicker.getDayOfMonth() < startDatePicker.getDayOfMonth())) {
+
+                // Установка endDatePicker на ту же дату, что и startDatePicker
+                endDatePicker.updateDate(startDatePicker.getYear(), startDatePicker.getMonth(), startDatePicker.getDayOfMonth() + 1);
+            }
+        });
+
         save_changes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -88,6 +99,8 @@ public class BookingsEdit extends AppCompatActivity {
 
         startDatePicker = findViewById(R.id.datePickerStartDate);
         endDatePicker = findViewById(R.id.datePickerEndDate);
+
+
 
         clientsSpinner = findViewById(R.id.spinnerClients);
         apartamentsSpinner = findViewById(R.id.spinnerApartaments);

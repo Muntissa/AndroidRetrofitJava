@@ -142,7 +142,7 @@ public class FacilitiesList extends AppCompatActivity {
 
                     @Override
                     public void onFailure(Call<List<Facilities>> call, Throwable t) {
-                        Toast.makeText(FacilitiesList.this, "Не удалось загрузить услуги", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(FacilitiesList.this, "Удобство удалено", Toast.LENGTH_SHORT).show();
                     }
                 });
     }

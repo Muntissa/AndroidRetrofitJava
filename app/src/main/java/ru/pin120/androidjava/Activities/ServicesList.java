@@ -143,7 +143,7 @@ public class ServicesList extends AppCompatActivity {
 
                     @Override
                     public void onFailure(Call<List<Services>> call, Throwable t) {
-                        Toast.makeText(ServicesList.this, "Не удалось загрузить услуги", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ServicesList.this, "Услуга удалена", Toast.LENGTH_SHORT).show();
                     }
                 });
     }

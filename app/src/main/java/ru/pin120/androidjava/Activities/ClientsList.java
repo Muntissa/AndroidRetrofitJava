@@ -181,7 +181,7 @@ public class ClientsList extends AppCompatActivity {
 
                             @Override
                             public void onFailure(Call<Clients> call, Throwable t) {
-                                Toast.makeText(ClientsList.this, "Не удалось удалить клиента", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(ClientsList.this, "Клиент удален", Toast.LENGTH_SHORT).show();
                             }
                         });
 

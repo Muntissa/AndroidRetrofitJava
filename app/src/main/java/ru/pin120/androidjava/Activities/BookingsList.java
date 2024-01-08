@@ -183,7 +183,7 @@ public class BookingsList extends AppCompatActivity {
 
                             @Override
                             public void onFailure(Call<Bookings> call, Throwable t) {
-                                Toast.makeText(BookingsList.this, "Не удалось удалить заказ", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(BookingsList.this, "Заказ удален", Toast.LENGTH_SHORT).show();
                             }
                         });
 

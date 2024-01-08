@@ -182,7 +182,7 @@ public class ApartamentsList extends AppCompatActivity {
 
                             @Override
                             public void onFailure(Call<Apartaments> call, Throwable t) {
-                                Toast.makeText(ApartamentsList.this, "Не удалось удалить апартаменты", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(ApartamentsList.this, "Апартаменты удалены", Toast.LENGTH_SHORT).show();
                             }
                         });
 

@@ -9,9 +9,12 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import ru.pin120.androidjava.Entities.Apartaments;
 import ru.pin120.androidjava.Entities.Clients;
+import ru.pin120.androidjava.Entities.Facilities;
+import ru.pin120.androidjava.Entities.Services;
 import ru.pin120.androidjava.R;
 import ru.pin120.androidjava.REST.ResourceHelper;
 
@@ -37,10 +40,22 @@ public class ApartamentsAdapter extends RecyclerView.Adapter<ApartamentsHolder>{
         Apartaments apartament = apartamentsList.get(position);
 
         holder.number.setText("Номер: " + apartament.getNumber());
-        holder.area.setText("Площадь: " + apartament.getArea());
+        holder.area.setText("Площадь: " + apartament.getArea() + " м²");
         holder.tariff.setText("Тариф: " + apartament.getTariff().getName());
 
+        holder.servicesDetails.setText("Услуги: \n" + String.join("\n", apartament.getServices()
+                .stream()
+                .map(Services::getName)
+                .collect(Collectors.toList())));
+
+        holder.facilitiesDetails.setText("Удобства: \n" + String.join("\n", apartament.getFacilities()
+                .stream()
+                .map(Facilities::getName)
+                .collect(Collectors.toList())));
+
         holder.image.setImageResource(R.drawable.testimage);
+
+        holder.setDetailsVisibility();
 /*        String photo = apartament.getPhotoPath().toLowerCase();
 
         int resouceId = ResourceHelper.getResourceIdByName(holder.image.getContext(), photo);

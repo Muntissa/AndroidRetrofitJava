@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -89,6 +90,37 @@ public class BookingsCreate extends AppCompatActivity {
 
         startDatePicker = findViewById(R.id.datePickerStartDate);
         endDatePicker = findViewById(R.id.datePickerEndDate);
+
+        Calendar calendar = Calendar.getInstance();
+        int startYear = calendar.get(Calendar.YEAR);
+        int startMonth = calendar.get(Calendar.MONTH);
+        int startDay = calendar.get(Calendar.DAY_OF_MONTH);
+
+        startDatePicker.init(startYear, startMonth, startDay, (view, year, monthOfYear, dayOfMonth) -> {
+            // Проверка, чтобы endDatePicker был не раньше startDatePicker
+            if (endDatePicker.getYear() < year ||
+                    (endDatePicker.getYear() == year && endDatePicker.getMonth() < monthOfYear) ||
+                    (endDatePicker.getYear() == year && endDatePicker.getMonth() == monthOfYear && endDatePicker.getDayOfMonth() < dayOfMonth)) {
+
+                // Установка endDatePicker на ту же дату, что и startDatePicker
+                endDatePicker.updateDate(year, monthOfYear, dayOfMonth);
+            }
+        });
+
+        int endYear = calendar.get(Calendar.YEAR);
+        int endMonth = calendar.get(Calendar.MONTH);
+        int endDay = calendar.get(Calendar.DAY_OF_MONTH) + 1;
+
+        endDatePicker.init(endYear, endMonth, endDay, (view, year, monthOfYear, dayOfMonth) -> {
+            // Проверка, чтобы endDatePicker не был раньше startDatePicker
+            if (endDatePicker.getYear() < startDatePicker.getYear() ||
+                    (endDatePicker.getYear() == startDatePicker.getYear() && endDatePicker.getMonth() < startDatePicker.getMonth()) ||
+                    (endDatePicker.getYear() == startDatePicker.getYear() && endDatePicker.getMonth() == startDatePicker.getMonth() && endDatePicker.getDayOfMonth() < startDatePicker.getDayOfMonth())) {
+
+                // Установка endDatePicker на ту же дату, что и startDatePicker
+                endDatePicker.updateDate(startDatePicker.getYear(), startDatePicker.getMonth(), startDatePicker.getDayOfMonth() + 1);
+            }
+        });
 
         clientsSpinner = findViewById(R.id.spinnerClients);
         apartamentsSpinner = findViewById(R.id.spinnerApartaments);

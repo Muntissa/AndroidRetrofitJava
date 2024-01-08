@@ -2,10 +2,13 @@ package ru.pin120.androidjava.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.animation.ObjectAnimator;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -85,24 +88,26 @@ public class FacilitiesEdit extends AppCompatActivity {
 
         findedFacility.setName(String.valueOf(name.getText()));
 
-        facilitiesApi.update(findedFacility)
-                .enqueue(new Callback<Facilities>() {
-                    @Override
-                    public void onResponse(Call<Facilities> call, Response<Facilities> response) {
-                        Toast.makeText(FacilitiesEdit.this, "Сохранение получилось!!!", Toast.LENGTH_SHORT).show();
-                    }
+        if(isValidInput()) {
+            facilitiesApi.update(findedFacility)
+                    .enqueue(new Callback<Facilities>() {
+                        @Override
+                        public void onResponse(Call<Facilities> call, Response<Facilities> response) {
+                            Toast.makeText(FacilitiesEdit.this, "Сохранение получилось!!!", Toast.LENGTH_SHORT).show();
+                        }
 
-                    @Override
-                    public void onFailure(Call<Facilities> call, Throwable t) {
-                        Toast.makeText(FacilitiesEdit.this, "Сохранение провалилось!!!", Toast.LENGTH_SHORT).show();
-                        Logger.getLogger(ClientsCreate.class.getName()).log(Level.SEVERE, "Error occurred", t);
-                    }
-                });
+                        @Override
+                        public void onFailure(Call<Facilities> call, Throwable t) {
+                            Toast.makeText(FacilitiesEdit.this, "Сохранение провалилось!!!", Toast.LENGTH_SHORT).show();
+                            Logger.getLogger(ClientsCreate.class.getName()).log(Level.SEVERE, "Error occurred", t);
+                        }
+                    });
 
-        FacilitiesList.updateAdapter(); //Падает, если раскоментить
-        finish();
-        Intent intent = new Intent(FacilitiesEdit.this, FacilitiesList.class);
-        startActivity(intent);
+            FacilitiesList.updateAdapter(); //Падает, если раскоментить
+            finish();
+            Intent intent = new Intent(FacilitiesEdit.this, FacilitiesList.class);
+            startActivity(intent);
+        }
     }
 
     @Override
@@ -111,5 +116,39 @@ public class FacilitiesEdit extends AppCompatActivity {
             FacilitiesList.updateAdapter();
         }
         return super.onKeyDown(keyCode, event);
+    }
+
+    private boolean isValidInput() {
+        String facilityName = name.getText().toString().trim();
+
+        if(facilityName.isEmpty()) {
+            showToastAndAnimation("Введите название");
+            return false;
+        } else if (!isValid(facilityName)) {
+            showToastAndHighlight("Некорректное название. Допустимы только буквы");
+            return false;
+        } else {
+            name.setTextColor((Color.BLACK));
+            return true;
+        }
+    }
+
+    private boolean isValid(String name) {
+        String regex = "^[a-zA-Zа-яА-ЯёЁ]+$";
+        return name.matches(regex);
+    }
+
+    private void showToastAndHighlight(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+        name.setTextColor(Color.RED);
+    }
+    private void showToastAndAnimation(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+        ObjectAnimator animator = ObjectAnimator.ofFloat(name, View.ALPHA, 0.3f);
+        animator.setDuration(300);
+        animator.setInterpolator(new AccelerateDecelerateInterpolator());
+        animator.setRepeatMode(ObjectAnimator.REVERSE);
+        animator.setRepeatCount(3);
+        animator.start();
     }
 }

@@ -142,7 +142,7 @@ public class TariffsList extends AppCompatActivity {
 
                     @Override
                     public void onFailure(Call<List<Tariffs>> call, Throwable t) {
-                        Toast.makeText(TariffsList.this, "Не удалось загрузить тарифы", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(TariffsList.this, "Тариф удален", Toast.LENGTH_SHORT).show();
                     }
                 });
     }

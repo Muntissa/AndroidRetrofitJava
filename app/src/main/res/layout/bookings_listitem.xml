@@ -26,7 +26,8 @@
                 android:id="@+id/bookingsListItem_Number"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="20sp"
+                android:layout_marginLeft="20sp"
+                android:layout_marginTop="15sp"
                 android:text="Номер: "
                 android:textColor="@color/black"
                 android:textSize="16sp"
@@ -42,18 +43,69 @@
                 android:layout_marginBottom="8dp"
                 android:text="Клиент: "
                 android:textSize="16sp"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/bookingsListItem_Number"
                 app:layout_constraintTop_toBottomOf="@+id/bookingsListItem_Number" />
+
+            <TextView
+                android:id="@+id/bookingsListItem_StartTimeDetail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:layout_marginLeft="20sp"
+                android:text="Нач. дата: "
+                android:textSize="16sp"
+
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/bookingsListItem_Client" />
+
+            <TextView
+                android:id="@+id/bookingsListItem_EndTimeDetail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:layout_marginLeft="150sp"
+                android:text="Кон. дата: "
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/bookingsListItem_Client" />
+
+            <TextView
+                android:id="@+id/bookingsListItem_ApatamentDetail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginLeft="20sp"
+                android:text="Номер апартаментов: "
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/bookingsListItem_StartTimeDetail" />
+
+            <TextView
+                android:id="@+id/bookingsListItem_ServicesDetail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="8dp"
+                android:text="Услуги: "
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/bookingsListItem_ApatamentDetail" />
+
 
             <TextView
                 android:id="@+id/bookingsListItem_Price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="20sp"
+                android:layout_marginTop="30sp"
+                android:layout_marginRight="20sp"
+                android:layout_marginBottom="30sp"
                 android:text="Цена: "
                 android:textSize="16sp"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/bookingsListItem_EndTimeDetail"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
